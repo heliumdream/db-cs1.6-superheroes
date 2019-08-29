@@ -1,5 +1,5 @@
 # db-cs1.6-superheroes
-https://forums.alliedmods.net/forumdisplay.php?f=30 || http://dbclan.hdhost.info/
+Allied Mod Forums: https://forums.alliedmods.net/forumdisplay.php?f=30 || DB Clan Forum: http://dbclan.hdhost.info/ || Steam Group: https://steamcommunity.com/groups/dbsuperheroes
 
 Found this superhero package maintained by ibiruai:
 https://github.com/ibiruai/cstrike-superhero-server/tree/master/cstrike
