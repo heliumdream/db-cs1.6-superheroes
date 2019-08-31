@@ -185,10 +185,9 @@ public quicksilver_kd()
 
 public quicksilver_endflow(id)
 {
-	if (!is_user_alive(id)) return
+	//if (!is_user_alive(id) || !is_user_connected(id)) return
 
-	set_hudmessage(50,100,255,-1.0,0.25,0,1.0,1.3,0.4,0.4,-1)
-	show_hudmessage(id,"The flow of time has returned to normal.")
+	if (!is_user_alive(id)) return
 
 	//new id = parm[0]
 	if(!stopped[id]) return
@@ -203,6 +202,12 @@ public quicksilver_endflow(id)
 	//if( fwPreThink ) unregister_forward( FM_PlayerPreThink , fwPreThink )		
 	set_pdata_int ( id, 83, -1 )
 	//client_cmd(id,"-strafe")
+
+	if (!is_user_connected(id)) return
+
+	set_hudmessage(50,100,255,-1.0,0.25,0,1.0,1.3,0.4,0.4,-1)
+	show_hudmessage(id,"The flow of time has returned to normal.")
+
 
 	//client_print(id, print_chat, "[SH]%s : Debug - unreg_forward fwPreThink.", gHeroName)
 }
@@ -343,8 +348,16 @@ public Player_Jump( id )
 
 public newRound(id)
 {
+	if (gPlayerUltimateUsed[id]) {
+		remove_task(id)	
+		quicksilver_endflow(id)
+	}
+
 	gPlayerUltimateUsed[id]=false
+
+
 }
+
 public round_end()
 {
 	for (new id=0; id <= SH_MAXSLOTS; id++) {

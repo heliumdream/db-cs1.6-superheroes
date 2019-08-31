@@ -104,6 +104,9 @@ public sendStormCooldown(id)
  public Storm_death()
  {
 	new id=read_data(2)
+
+	if ( !shModActive() || !is_user_connected(id)) return PLUGIN_HANDLED
+
 	if (gHasStormPower[id])
 	{
 		if ( gStormTimer[id]>0 )
@@ -128,6 +131,9 @@ public sendStormCooldown(id)
 	new temp[6]
 	read_argv(1,temp,5)
 	new id=str_to_num(temp)
+
+	if ( !shModActive() || !is_user_alive(id) || !is_user_connected(id)) return PLUGIN_HANDLED
+
 	if ( gPlayerUltimateUsed[id] )
 	{
 		playSoundDenySelect(id)
